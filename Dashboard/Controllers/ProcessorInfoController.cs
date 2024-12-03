@@ -19,6 +19,7 @@ namespace Dashboard.Controllers
                 // Ler informações do arquivo status
                 foreach (var line in System.IO.File.ReadLines(statusFile))
                 {
+                    Console.Write(line);
                     if (line.StartsWith("Name:"))
                         processInfo.Name = line.Split('\t')[1].Trim();
                     else if (line.StartsWith("State:"))

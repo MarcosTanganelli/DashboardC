@@ -21,42 +21,27 @@ namespace Dashboard.Controllers
                 {
                     if (line.StartsWith("Name:")){
                         Console.Write(line);
-                        Console.Write("\n");
                         processInfo.Name = line.Split('\t')[1].Trim();
                     }
                     else if (line.StartsWith("State:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.State = line.Split('\t')[1].Trim();
                     }
                     else if (line.StartsWith("Threads:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.Threads = int.Parse(line.Split('\t')[1].Trim());
                     }
                     else if (line.StartsWith("VmSize:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.VmSize = int.Parse(line.Split()[1]);
                     } // kB
                     else if (line.StartsWith("VmRSS:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.VmRSS = int.Parse(line.Split()[1]);
                     }  // kB
                     else if (line.StartsWith("VmData:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.VmData = int.Parse(line.Split()[1]);
                     } // kB
                     else if (line.StartsWith("VmStk:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.VmStk = int.Parse(line.Split()[1]);
                     }  // kB
                     else if (line.StartsWith("VmExe:")){
-                        Console.Write(line);
-                        Console.Write("\n");
                         processInfo.VmExe = int.Parse(line.Split()[1]);
                     }  // kB
                 }
@@ -71,6 +56,9 @@ namespace Dashboard.Controllers
                 int pssTotal = 0;
                 foreach (var line in System.IO.File.ReadLines(smapsFile))
                 {
+                    Console.Write(line);
+                    Console.Write("\n");
+
                     if (line.StartsWith("Pss:"))
                     {
                         pssTotal += int.Parse(line.Split()[1]); // kB

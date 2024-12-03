@@ -73,5 +73,19 @@ namespace Dashboard.Controllers
         {
             _logger = logger;
         }
+
+        [HttpPost]
+        [Route("api/[controller]")]
+        public async Task<ActionResult> ProcessorIds(int id)
+        {
+            ProcessInfos? ProceSys = GetProcessInfo(id);
+
+            if (ProceSys == null)
+            {
+                return NotFound(new { message = $"Process {id} not found or inaccessible." });
+            }
+
+            return Ok(ProceSys); // Retorna os dados do processo
+        }
     }
 }

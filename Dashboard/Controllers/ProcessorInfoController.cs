@@ -19,23 +19,46 @@ namespace Dashboard.Controllers
                 // Ler informações do arquivo status
                 foreach (var line in System.IO.File.ReadLines(statusFile))
                 {
-                    Console.Write(line);
-                    if (line.StartsWith("Name:"))
+                    if (line.StartsWith("Name:")){
+                        Console.Write(line);
+                        Console.Write("\n");
                         processInfo.Name = line.Split('\t')[1].Trim();
-                    else if (line.StartsWith("State:"))
+                    }
+                    else if (line.StartsWith("State:")){
+                        Console.Write(line);
+                        Console.Write("\n");
                         processInfo.State = line.Split('\t')[1].Trim();
-                    else if (line.StartsWith("Threads:"))
+                    }
+                    else if (line.StartsWith("Threads:")){
+                        Console.Write(line);
+                        Console.Write("\n");
                         processInfo.Threads = int.Parse(line.Split('\t')[1].Trim());
-                    else if (line.StartsWith("VmSize:"))
-                        processInfo.VmSize = int.Parse(line.Split()[1]); // kB
-                    else if (line.StartsWith("VmRSS:"))
-                        processInfo.VmRSS = int.Parse(line.Split()[1]);  // kB
-                    else if (line.StartsWith("VmData:"))
-                        processInfo.VmData = int.Parse(line.Split()[1]); // kB
-                    else if (line.StartsWith("VmStk:"))
-                        processInfo.VmStk = int.Parse(line.Split()[1]);  // kB
-                    else if (line.StartsWith("VmExe:"))
-                        processInfo.VmExe = int.Parse(line.Split()[1]);  // kB
+                    }
+                    else if (line.StartsWith("VmSize:")){
+                        Console.Write(line);
+                        Console.Write("\n");
+                        processInfo.VmSize = int.Parse(line.Split()[1]);
+                    } // kB
+                    else if (line.StartsWith("VmRSS:")){
+                        Console.Write(line);
+                        Console.Write("\n");
+                        processInfo.VmRSS = int.Parse(line.Split()[1]);
+                    }  // kB
+                    else if (line.StartsWith("VmData:")){
+                        Console.Write(line);
+                        Console.Write("\n");
+                        processInfo.VmData = int.Parse(line.Split()[1]);
+                    } // kB
+                    else if (line.StartsWith("VmStk:")){
+                        Console.Write(line);
+                        Console.Write("\n");
+                        processInfo.VmStk = int.Parse(line.Split()[1]);
+                    }  // kB
+                    else if (line.StartsWith("VmExe:")){
+                        Console.Write(line);
+                        Console.Write("\n");
+                        processInfo.VmExe = int.Parse(line.Split()[1]);
+                    }  // kB
                 }
 
                 // Calcular o número total de páginas (VmRSS / 4 KB)
